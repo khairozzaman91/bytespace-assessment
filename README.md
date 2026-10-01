@@ -1,16 +1,53 @@
-# React + Vite
+# ByteSpace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An online course platform landing page — frontend assessment project.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React (Vite)
+- Tailwind CSS
+- React Router
+- lucide-react (icons)
 
-## React Compiler
+## Completed
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Navbar**
+- Logo + brand name
+- Nav links (Home, Courses, Creators)
+- Sign In, Join Us button
+- Cart icon
+- Mobile responsive menu
 
-## Expanding the ESLint configuration
+**Hero Section**
+- Heading + subtext
+- Search box
+- Background shape + hero image
+- Floating cards (UI/UX Design, Learning Progress, Happy Students)
+- Decorative shapes (desktop only)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Remaining
+
+- Logo strip
+- Category tabs + course grid
+- Explore paths section
+- Growth/stats section
+- Creator CTA banner
+- Testimonials
+- Footer
+- Login/Signup (bonus)
+
+## Getting Started
+
+```bash
+git clone https://github.com/khairozzaman91/bytespace.git
+cd bytespace
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
+
+## Workflow
+
+- Each section = separate branch → commit → push → PR → merge
+- Public GitHub repo, `main` protected (no direct commits)
