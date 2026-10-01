@@ -8,7 +8,7 @@ import ProfessionalGrowth from "./components/ProfessionalGrowth";
 import CreatorCTA from "./components/CreatorCTA";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
-
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -17,13 +17,13 @@ function App() {
       <Hero />
       <Brands />
       <CategorySection />
-        <CourseGrid />
-        <LearningPaths />
-        <ProfessionalGrowth />
-        <CreatorCTA />
-        <Testimonials />
-        <Footer />
-    
+      <CourseGrid />
+      <LearningPaths />
+      <ProfessionalGrowth />
+      <CreatorCTA />
+      <Testimonials />
+      <Footer />
+      <SearchPage />
     </>
   );
 }
