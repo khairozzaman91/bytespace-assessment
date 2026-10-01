@@ -5,7 +5,7 @@ import CategorySection from "./components/CategorySection";
 import CourseGrid from "./components/CourseGrid";
 import LearningPaths from "./components/LearningPaths";
 import ProfessionalGrowth from "./components/ProfessionalGrowth";
-
+import CreatorCTA from "./components/CreatorCTA";
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <CourseGrid />
         <LearningPaths />
         <ProfessionalGrowth />
+        <CreatorCTA />
     
     </>
   );
