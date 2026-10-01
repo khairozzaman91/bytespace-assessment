@@ -8,7 +8,6 @@ import {
   Users,
   Star,
   BarChart3,
-  Play,
 } from "lucide-react";
 
 import videoThumbnail from "../assets/coursedeatils/course-deatils.png";

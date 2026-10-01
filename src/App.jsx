@@ -10,6 +10,8 @@ import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import SearchPage from "./pages/SearchPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
+import CourseDetails from "./pages/CourseDetails";
+import CourseReviews from "./pages/Coursereview";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
       <Footer />
       <SearchPage />
       <CourseDetailsPage />
+      <CourseDetails />
+      <CourseReviews />
     </>
   );
 }
