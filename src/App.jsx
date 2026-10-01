@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Brands from "./components/Partners";
 import CategorySection from "./components/CategorySection";
 import CourseGrid from "./components/CourseGrid";
+import LearningPaths from "./components/LearningPaths";
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <Brands />
       <CategorySection />
         <CourseGrid />
+        <LearningPaths />
     
     </>
   );
