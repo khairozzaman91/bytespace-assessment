@@ -16,7 +16,9 @@ An online course platform landing page — frontend assessment project.
 - Nav links (Home, Courses, Creators)
 - Sign In, Join Us button
 - Cart icon
-- Mobile responsive menu
+
+**Brand Partners Section**
+- Logo strip (Logoipsum × 5)
 
 **Hero Section**
 - Heading + subtext
