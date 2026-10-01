@@ -12,6 +12,7 @@ import SearchPage from "./pages/SearchPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import CourseDetails from "./pages/CourseDetails";
 import CourseReviews from "./pages/Coursereview";
+import CreatorProfile from "./pages/CreatorProfile";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <CourseDetailsPage />
       <CourseDetails />
       <CourseReviews />
+      <CreatorProfile />
     </>
   );
 }
