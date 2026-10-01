@@ -7,6 +7,7 @@ import LearningPaths from "./components/LearningPaths";
 import ProfessionalGrowth from "./components/ProfessionalGrowth";
 import CreatorCTA from "./components/CreatorCTA";
 import Testimonials from "./components/Testimonials";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <ProfessionalGrowth />
         <CreatorCTA />
         <Testimonials />
+        <Footer />
     
     </>
   );
