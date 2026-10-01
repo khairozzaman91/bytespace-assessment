@@ -4,7 +4,7 @@ import Brands from "./components/Partners";
 import CategorySection from "./components/CategorySection";
 import CourseGrid from "./components/CourseGrid";
 import LearningPaths from "./components/LearningPaths";
-
+import ProfessionalGrowth from "./components/ProfessionalGrowth";
 
 
 
@@ -17,6 +17,7 @@ function App() {
       <CategorySection />
         <CourseGrid />
         <LearningPaths />
+        <ProfessionalGrowth />
     
     </>
   );
