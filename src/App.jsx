@@ -14,6 +14,9 @@ import CourseDetails from "./pages/CourseDetails";
 import CourseReviews from "./pages/Coursereview";
 import CreatorProfile from "./pages/CreatorProfile";
 import NotFound from "./pages/NotFound";
+import SignUp from "./pages/auth/SignUp";
+import Login from "./pages/auth/Login";
+
 function App() {
   return (
     <>
@@ -33,6 +36,8 @@ function App() {
       <CourseReviews />
       <CreatorProfile />
       <NotFound />
+      <SignUp />
+      <Login />
     </>
   );
 }
