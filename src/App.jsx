@@ -1,13 +1,10 @@
+
+import { Routes, Route } from 'react-router-dom';
+
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Brands from "./components/Partners";
-import CategorySection from "./components/CategorySection";
-import CourseGrid from "./components/CourseGrid";
-import LearningPaths from "./components/LearningPaths";
-import ProfessionalGrowth from "./components/ProfessionalGrowth";
-import CreatorCTA from "./components/CreatorCTA";
-import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import CourseDetails from "./pages/CourseDetails";
@@ -19,26 +16,23 @@ import Login from "./pages/auth/Login";
 
 function App() {
   return (
-    <>
+    <div>
       <Navbar />
-      <Hero />
-      <Brands />
-      <CategorySection />
-      <CourseGrid />
-      <LearningPaths />
-      <ProfessionalGrowth />
-      <CreatorCTA />
-      <Testimonials />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/course-details" element={<CourseDetailsPage />} />
+        <Route path="/course/:id" element={<CourseDetails />} />
+        <Route path="/course-reviews" element={<CourseReviews />} />
+        <Route path="/creator-profile" element={<CreatorProfile />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
       <Footer />
-      <SearchPage />
-      <CourseDetailsPage />
-      <CourseDetails />
-      <CourseReviews />
-      <CreatorProfile />
-      <NotFound />
-      <SignUp />
-      <Login />
-    </>
+    </div>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Share2,
   CheckCircle2,
@@ -27,6 +28,7 @@ const heroBackground = {
 
 export default function CourseDetailsPage() {
   const [activeTab, setActiveTab] = useState("about");
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
@@ -52,7 +54,10 @@ export default function CourseDetailsPage() {
 
               <p className="text-sm text-blue-100 pt-1">
                 by{" "}
-                <span className="text-lime-400 font-medium cursor-pointer hover:underline">
+                <span 
+                  onClick={() => navigate("/creator-profile")}
+                  className="text-lime-400 font-medium cursor-pointer hover:underline"
+                >
                   purepearl studio
                 </span>
               </p>
@@ -196,7 +201,10 @@ export default function CourseDetailsPage() {
                     </div>
                   </div>
 
-                  <button className="text-xs font-semibold text-blue-600 border border-blue-200 px-3 py-1.5 rounded-full hover:bg-blue-50 transition">
+                  <button 
+                    onClick={() => navigate("/creator-profile")}
+                    className="text-xs font-semibold text-blue-600 border border-blue-200 px-3 py-1.5 rounded-full hover:bg-blue-50 transition cursor-pointer"
+                  >
                     See Full Profile
                   </button>
                 </div>
@@ -215,8 +223,13 @@ export default function CourseDetailsPage() {
               {["about", "lessons", "review"].map((tab) => (
                 <button
                   key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`pb-3 text-sm font-semibold capitalize transition border-b-2 ${
+                  onClick={() => {
+                    setActiveTab(tab);
+                    if (tab === "review") {
+                      navigate("/course-reviews");
+                    }
+                  }}
+                  className={`pb-3 text-sm font-semibold capitalize transition border-b-2 cursor-pointer ${
                     activeTab === tab
                       ? "border-blue-600 text-blue-600"
                       : "border-transparent text-gray-400 hover:text-gray-600"

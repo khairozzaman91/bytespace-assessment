@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Share2,
   CheckCircle2,
@@ -8,7 +9,6 @@ import {
   Users,
   Star,
   BarChart3,
-  Play,
   BookOpen,
 } from "lucide-react";
 
@@ -27,15 +27,62 @@ const heroBackground = {
   backgroundSize: "72px 72px",
 };
 
+// স্ক্রিনশটের রিভিউ ডেটা
+const reviewsData = [
+  {
+    id: 1,
+    name: "PurePearl Studio",
+    role: "UI/UX Designer",
+    time: "a year ago",
+    rating: 5,
+    text: "The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!",
+    avatar: creatorAvatar,
+  },
+  {
+    id: 2,
+    name: "Albert Flores",
+    role: "UI/UX Designer",
+    time: "a year ago",
+    rating: 5,
+    text: "This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience. Excited to implement what I've learned!",
+    avatar: creatorAvatar,
+  },
+  {
+    id: 3,
+    name: "Cody Fisher",
+    role: "UI/UX Designer",
+    time: "a year ago",
+    rating: 5,
+    text: "The project showcase and critique module created a collaborative environment where I could showcase my work, receive valuable feedback, and refine my skills. It added a unique and valuable dimension to the learning process.",
+    avatar: creatorAvatar,
+  },
+  {
+    id: 4,
+    name: "Brooklyn Simmons",
+    role: "UI/UX Designer",
+    time: "a year ago",
+    rating: 5,
+    text: "The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape, and the engaging content kept me motivated throughout.",
+    avatar: creatorAvatar,
+  },
+];
+
 export default function CourseDetails() {
-  const [activeTab, setActiveTab] = useState("lesson"); // স্ক্রিনশট অনুযায়ী ডিফল্ট 'lesson' রাখা হলো
+  const [activeTab, setActiveTab] = useState("lesson"); 
+  const [selectedRating, setSelectedRating] = useState("all"); // রিভিউ ফিল্টারিংয়ের জন্য স্টেট
+
+  // ফিল্টার করা রিভিউ লিস্ট
+  const filteredReviews =
+    selectedRating === "all"
+      ? reviewsData
+      : reviewsData.filter((r) => r.rating === Number(selectedRating));
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
       
       {/* =========================================
           1. FULL-WIDTH BLUE HERO
-      ========================================== */}
+      ========================================= */}
       <section
         className="relative w-full text-white pt-10 pb-12 px-4 sm:px-6 lg:px-8"
         style={heroBackground}
@@ -75,7 +122,7 @@ export default function CourseDetails() {
 
             <div className="flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
               <Star size={16} className="fill-blue-700 text-blue-700" />
-              <span>4.8 (172 reviews)</span>
+              <span>4.8 (172 reviews)[cite: 2]</span>
             </div>
 
             <div className="flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
@@ -94,9 +141,6 @@ export default function CourseDetails() {
                   alt="Course Video Preview"
                   className="w-full h-full object-cover opacity-90"
                 />
-                <button className="absolute bg-lime-400 hover:bg-lime-300 text-blue-900 p-4 rounded-full shadow-lg transition cursor-pointer flex items-center justify-center">
-                  <Play size={28} className="fill-blue-900 ml-0.5" />
-                </button>
               </div>
             </div>
 
@@ -201,9 +245,12 @@ export default function CourseDetails() {
                     </div>
                   </div>
 
-                  <button className="text-xs font-semibold text-blue-600 border border-blue-200 px-3 py-1.5 rounded-full hover:bg-blue-50 transition cursor-pointer">
+                  <Link
+                    to="/creator-profile"
+                    className="text-xs font-semibold text-blue-600 border border-blue-200 px-3 py-1.5 rounded-full hover:bg-blue-50 transition cursor-pointer"
+                  >
                     See Full Profile
-                  </button>
+                  </Link>
                 </div>
               </aside>
             </div>
@@ -213,7 +260,7 @@ export default function CourseDetails() {
 
       {/* =========================================
           2. MAIN CONTENT (white area with dynamic tabs)
-      ========================================== */}
+      ========================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
@@ -363,33 +410,88 @@ export default function CourseDetails() {
               </div>
             )}
 
+            {/* ================= UPDATED REVIEWS TAB ================= */}
             {activeTab === "reviews" && (
-              <div className="space-y-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <h2 className="text-lg font-bold text-gray-900">Student Reviews</h2>
-                <div className="flex items-center gap-4 py-2 border-b border-gray-100">
-                  <div className="text-3xl font-extrabold text-blue-600">4.8</div>
-                  <div>
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={16} className="fill-yellow-400" />
-                      ))}
-                    </div>
-                    <p className="text-xs text-gray-500 mt-1">Based on 172 reviews</p>
-                  </div>
+              <div className="space-y-6">
+                <h2 className="text-lg font-bold text-gray-900">Individual Reviews:</h2>
+
+                {/* Rating Filter Buttons */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    onClick={() => setSelectedRating("all")}
+                    className={`px-4 py-1.5 rounded-full text-xs font-semibold transition cursor-pointer ${
+                      selectedRating === "all"
+                        ? "bg-lime-400 text-blue-900 shadow-sm"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    }`}
+                  >
+                    All rating
+                  </button>
+                  {[5, 4, 3, 2, 1].map((star) => (
+                    <button
+                      key={star}
+                      onClick={() => setSelectedRating(String(star))}
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition cursor-pointer ${
+                        selectedRating === String(star)
+                          ? "bg-lime-400 text-blue-900 shadow-sm"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                    >
+                      <Star size={12} className="fill-gray-600 text-gray-600" />
+                      <span>{star}</span>
+                    </button>
+                  ))}
                 </div>
-                <div className="space-y-4 pt-2">
-                  <div className="p-4 rounded-xl bg-gray-50 border border-gray-100 space-y-2">
-                    <div className="flex justify-between items-center">
-                      <h4 className="font-bold text-sm text-gray-900">Alex Johnson</h4>
-                      <span className="text-xs text-gray-400">2 weeks ago</span>
-                    </div>
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={14} className="fill-yellow-400" />
-                      ))}
-                    </div>
-                    <p className="text-xs text-gray-600">This course completely transformed how I approach digital assets. Highly recommended!</p>
-                  </div>
+
+                {/* Individual Review Cards */}
+                <div className="space-y-4">
+                  {filteredReviews.length > 0 ? (
+                    filteredReviews.map((review) => (
+                      <div
+                        key={review.id}
+                        className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 space-y-4"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <img
+                              src={review.avatar}
+                              alt={review.name}
+                              className="w-10 h-10 rounded-full object-cover"
+                            />
+                            <div>
+                              <h4 className="font-bold text-sm text-gray-900">
+                                {review.name}
+                              </h4>
+                              <p className="text-xs text-gray-400">
+                                {review.role}
+                              </p>
+                            </div>
+                          </div>
+                          <span className="text-xs text-gray-400">
+                            {review.time}
+                          </span>
+                        </div>
+
+                        <div className="flex text-gray-800 gap-0.5">
+                          {[...Array(review.rating)].map((_, i) => (
+                            <Star
+                              key={i}
+                              size={14}
+                              className="fill-gray-900 text-gray-900"
+                            />
+                          ))}
+                        </div>
+
+                        <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                          "{review.text}"
+                        </p>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-xs text-gray-500 py-4 text-center">
+                      No reviews found for this rating.
+                    </p>
+                  )}
                 </div>
               </div>
             )}

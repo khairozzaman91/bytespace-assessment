@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/brand-logo.png";
 import cartIcon from "../assets/Outlined.png";
@@ -10,39 +11,39 @@ export default function Navbar() {
     <nav className="bg-blue-700 text-white">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img
             src={logo}
             alt="ByteSpace logo"
             className="w-[28.88px] h-[31.5px]"
           />
           <span className="font-bold text-lg">ByteSpace</span>
-        </div>
+        </Link>
 
         {/* Middle links - desktop */}
         <div className="hidden md:flex gap-8 text-sm">
-          <a href="/" className="hover:text-lime-400">
+          <Link to="/" className="hover:text-lime-400">
             Home
-          </a>
-          <a href="/courses" className="hover:text-lime-400 mt-0.5">
+          </Link>
+          <Link to="/search" className="hover:text-lime-400 mt-0.5">
             Courses
-          </a>
-          <a href="/creators" className="hover:text-lime-400 mt-0.5">
+          </Link>
+          <Link to="/creator-profile" className="hover:text-lime-400 mt-0.5">
             Creators
-          </a>
+          </Link>
         </div>
 
         {/* Right side - desktop */}
         <div className="hidden md:flex items-center gap-4 text-sm">
-          <a href="/login" className="hover:text-lime-400">
+          <Link to="/login" className="hover:text-lime-400">
             Sign In
-          </a>
-          <a
-            href="/signup"
-            className=" px-4 py-2 rounded-full font-medium hover:bg-lime-300"
+          </Link>
+          <Link
+            to="/signup"
+            className="px-4 py-2 rounded-full font-medium hover:bg-lime-300 bg-lime-400 text-blue-700 transition"
           >
             Join Us
-          </a>
+          </Link>
           <img
             src={cartIcon}
             alt="cart"
@@ -59,24 +60,25 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-4 px-6 pb-4 text-sm">
-          <a href="/" className="hover:text-lime-400">
+          <Link to="/" className="hover:text-lime-400" onClick={() => setMenuOpen(false)}>
             Home
-          </a>
-          <a href="/courses" className="hover:text-lime-400">
+          </Link>
+          <Link to="/search" className="hover:text-lime-400" onClick={() => setMenuOpen(false)}>
             Courses
-          </a>
-          <a href="/creators" className="hover:text-lime-400">
+          </Link>
+          <Link to="/creator-profile" className="hover:text-lime-400" onClick={() => setMenuOpen(false)}>
             Creators
-          </a>
-          <a href="/login" className="hover:text-lime-400">
+          </Link>
+          <Link to="/login" className="hover:text-lime-400" onClick={() => setMenuOpen(false)}>
             Sign In
-          </a>
-          <a
-            href="/signup"
+          </Link>
+          <Link
+            to="/signup"
             className="bg-lime-400 text-blue-700 px-4 py-2 rounded-full text-center"
+            onClick={() => setMenuOpen(false)}
           >
             Join Us
-          </a>
+          </Link>
         </div>
       )}
     </nav>

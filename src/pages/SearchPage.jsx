@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CourseCard from "../components/CourseCard";
+import NotFound from "./NotFound"; 
 
 // Course thumbnails
 import course1 from "../assets/course/figma.png";
@@ -113,16 +114,27 @@ const allCourses = [
 
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [submittedQuery, setSubmittedQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const categories = ["All", "Featured", "Music", "Drawing & Painting", "UI/UX Design", "Development"];
 
-  // Filter courses based on search query and category
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setSubmittedQuery(searchQuery);
+  };
+
+  // Filter courses based on submitted query and category
   const filteredCourses = allCourses.filter((course) => {
-    const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = course.title.toLowerCase().includes(submittedQuery.toLowerCase());
     const matchesCategory = selectedCategory === "All" || course.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  // Jodi user search submit kore ebong kono course na paoya jay, tahole NotFound page render korbe
+  if (submittedQuery !== "" && filteredCourses.length === 0) {
+    return <NotFound />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
@@ -131,7 +143,8 @@ export default function SearchPage() {
         {/* Header & Search Bar */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">Find Your Next Course</h1>
-          <div className="max-w-xl mx-auto flex gap-2">
+          
+          <form onSubmit={handleSearchSubmit} className="max-w-xl mx-auto flex gap-2">
             <input
               type="text"
               placeholder="Search courses, skills, or creators..."
@@ -139,10 +152,13 @@ export default function SearchPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white text-sm"
             />
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition text-sm">
+            <button 
+              type="submit"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition text-sm cursor-pointer"
+            >
               Search
             </button>
-          </div>
+          </form>
         </div>
 
         {/* Category Filter Pills */}
@@ -151,7 +167,7 @@ export default function SearchPage() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition cursor-pointer ${
                 selectedCategory === category
                   ? "bg-blue-600 text-white"
                   : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100"
@@ -163,17 +179,11 @@ export default function SearchPage() {
         </div>
 
         {/* Search Results Grid */}
-        {filteredCourses.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCourses.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12 text-gray-500">
-            No courses found! Please try searching with a different keyword.
-          </div>
-        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
 
       </div>
     </div>

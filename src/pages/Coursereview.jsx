@@ -1,19 +1,16 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Share2,
-
   FileText,
   Video,
   Award,
   Users,
   Star,
   BarChart3,
-  Play,
- 
 } from "lucide-react";
 
 import videoThumbnail from "../assets/coursedeatils/course-deatils.png";
-
 import creatorAvatar from "../assets/coursedeatils/Ellipse.png";
 
 // Blue background with a faint white grid (blueprint style)
@@ -25,14 +22,13 @@ const heroBackground = {
 };
 
 export default function CourseReviews() {
-  const [activeTab, setActiveTab] = useState("reviews"); 
+  const [activeTab, setActiveTab] = useState("reviews");
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
-      
       {/* =========================================
           1. FULL-WIDTH BLUE HERO
-      ========================================== */}
+      ========================================= */}
       <section
         className="relative w-full text-white pt-10 pb-12 px-4 sm:px-6 lg:px-8"
         style={heroBackground}
@@ -71,7 +67,7 @@ export default function CourseReviews() {
             </div>
 
             <div className="flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
-              <Star size={16} className="fill-blue-700 text-blue-700" />
+              <Star size={16} className="fill-gray-800 text-gray-800" />
               <span>4.7 (172 reviews)</span>
             </div>
 
@@ -91,9 +87,6 @@ export default function CourseReviews() {
                   alt="Course Video Preview"
                   className="w-full h-full object-cover opacity-90"
                 />
-                <button className="absolute bg-lime-400 hover:bg-lime-300 text-blue-900 p-4 rounded-full shadow-lg transition cursor-pointer flex items-center justify-center">
-                  <Play size={28} className="fill-blue-900 ml-0.5" />
-                </button>
               </div>
             </div>
 
@@ -198,9 +191,12 @@ export default function CourseReviews() {
                     </div>
                   </div>
 
-                  <button className="text-xs font-semibold text-blue-600 border border-blue-200 px-3 py-1.5 rounded-full hover:bg-blue-50 transition cursor-pointer">
+                  <Link
+                    to="/creator-profile"
+                    className="text-xs font-semibold text-blue-600 border border-blue-200 px-3 py-1.5 rounded-full hover:bg-blue-50 transition cursor-pointer"
+                  >
                     See Full Profile
-                  </button>
+                  </Link>
                 </div>
               </aside>
             </div>
@@ -210,11 +206,10 @@ export default function CourseReviews() {
 
       {/* =========================================
           2. MAIN CONTENT (white area with dynamic tabs)
-      ========================================== */}
+      ========================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
-            
             {/* Pill Tabs */}
             <div className="flex items-center gap-3">
               {[
@@ -240,13 +235,15 @@ export default function CourseReviews() {
             {activeTab === "about" && (
               <div className="space-y-8">
                 <div className="space-y-4 text-gray-600 text-sm leading-relaxed bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <h2 className="text-lg font-bold text-gray-900">Description</h2>
+                  <h2 className="text-lg font-bold text-gray-900">
+                    Description
+                  </h2>
                   <p>
-                    Embark on an enlightening exploration into the world of digital
-                    creation with our comprehensive course, "Build Digital Assets: A
-                    Comprehensive Guide." This foundational learning experience
-                    invites you to dive deep into the intricacies of crafting
-                    impactful digital content.
+                    Embark on an enlightening exploration into the world of
+                    digital creation with our comprehensive course, "Build
+                    Digital Assets: A Comprehensive Guide." This foundational
+                    learning experience invites you to dive deep into the
+                    intricacies of crafting impactful digital content.
                   </p>
                 </div>
               </div>
@@ -254,51 +251,69 @@ export default function CourseReviews() {
 
             {activeTab === "lesson" && (
               <div className="space-y-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <h2 className="text-lg font-bold text-gray-900">Explore the Modules</h2>
+                <h2 className="text-lg font-bold text-gray-900">
+                  Explore the Modules
+                </h2>
                 <p className="text-sm text-gray-600">
-                  Immerse yourself in the course content as we break down each module into comprehensive lessons.
+                  Immerse yourself in the course content as we break down each
+                  module into comprehensive lessons.
                 </p>
               </div>
             )}
 
-            {/* UPDATED REVIEWS TAB MATCHING SCREENSHOT */}
+            {/* REVIEWS TAB */}
             {activeTab === "reviews" && (
               <div className="space-y-6">
-                {/* Header title & subtitle */}
                 <div className="space-y-1">
-                  <h2 className="text-xl font-bold text-gray-900">What Learners Are Saying</h2>
+                  <h2 className="text-xl font-bold text-gray-900">
+                    What Learners Are Saying
+                  </h2>
                   <p className="text-xs text-gray-500 leading-relaxed">
-                    Discover what our learners have to say about their experience with 'Build Digital Assets: A Comprehensive Guide.' Read reviews and ratings from individuals who have embarked on the transformative journey of mastering digital asset creation.
+                    Discover what our learners have to say about their
+                    experience with 'Build Digital Assets: A Comprehensive
+                    Guide.' Read reviews and ratings from individuals who have
+                    embarked on the transformative journey of mastering digital
+                    asset creation.
                   </p>
                 </div>
 
                 {/* Rating Overview Box */}
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col sm:flex-row items-center gap-6">
-                  {/* Big Lime Rating Card */}
                   <div className="bg-[#ccff00] w-36 h-36 rounded-2xl flex flex-col items-center justify-center shrink-0 shadow-sm">
-                    <span className="text-xs font-semibold text-gray-800">Ratings</span>
-                    <span className="text-4xl font-extrabold text-gray-900 mt-1">4.7</span>
+                    <span className="text-xs font-semibold text-gray-800">
+                      Ratings
+                    </span>
+                    <span className="text-4xl font-extrabold text-gray-900 mt-1">
+                      4.7
+                    </span>
                   </div>
 
-                  {/* Star Breakdown Bars */}
                   <div className="w-full space-y-2">
                     {[
-                      { stars: 5, width: "w-full", count: 130 },
-                      { stars: 5, width: "w-[65%]", count: 120 },
-                      { stars: 5, width: "w-[30%]", count: 21 },
-                      { stars: 5, width: "w-[20%]", count: 12 },
-                      { stars: 5, width: "w-[15%]", count: 16 },
+                      { width: "w-full", count: 720 },
+                      { width: "w-[65%]", count: 120 },
+                      { width: "w-[30%]", count: 21 },
+                      { width: "w-[20%]", count: 12 },
+                      { width: "w-[15%]", count: 16 },
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3">
                         <div className="flex-1 bg-gray-100 h-2.5 rounded-full overflow-hidden">
-                          <div className={`bg-[#ccff00] h-full ${item.width}`}></div>
+                          <div
+                            className={`bg-[#ccff00] h-full ${item.width}`}
+                          ></div>
                         </div>
                         <div className="flex text-gray-800 shrink-0">
                           {[...Array(5)].map((_, i) => (
-                            <Star key={i} size={13} className="fill-gray-800 text-gray-800" />
+                            <Star
+                              key={i}
+                              size={13}
+                              className="fill-gray-800 text-gray-800"
+                            />
                           ))}
                         </div>
-                        <span className="text-xs text-gray-500 w-8 text-right">{item.count}</span>
+                        <span className="text-xs text-gray-500 w-8 text-right">
+                          {item.count}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -306,25 +321,24 @@ export default function CourseReviews() {
 
                 {/* Individual Reviews Header & Filters */}
                 <div className="space-y-4 pt-2">
-                  <h3 className="font-bold text-gray-900 text-base">Individual Reviews:</h3>
-                  
+                  <h3 className="font-bold text-gray-900 text-base">
+                    Individual Reviews:
+                  </h3>
+
                   <div className="flex flex-wrap items-center gap-2">
                     <button className="bg-[#ccff00] text-gray-900 px-4 py-1.5 rounded-full text-xs font-semibold shadow-sm cursor-pointer">
                       All rating
                     </button>
-                    {[
-                      { label: "5", count: "" },
-                      { label: "4", count: "" },
-                      { label: "3", count: "" },
-                      { label: "2", count: "" },
-                      { label: "1", count: "" },
-                    ].map((filter, i) => (
+                    {["5", "4", "3", "2", "1"].map((label, i) => (
                       <button
                         key={i}
                         className="flex items-center gap-1.5 bg-white border border-gray-200 text-gray-700 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-gray-50 transition cursor-pointer shadow-2xs"
                       >
-                        <Star size={12} className="fill-gray-700 text-gray-700" />
-                        <span>{filter.label}</span>
+                        <Star
+                          size={12}
+                          className="fill-gray-800 text-gray-800"
+                        />
+                        <span>{label}</span>
                       </button>
                     ))}
                   </div>
@@ -337,28 +351,35 @@ export default function CourseReviews() {
                       name: "PurePearl Studio",
                       role: "UI/UX Designer",
                       time: "a year ago",
-                      review: "The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!",
+                      review:
+                        "The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!",
                     },
                     {
                       name: "Albert Flores",
                       role: "UI/UX Designer",
                       time: "a year ago",
-                      review: "This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience. Excited to implement what I've learned!",
+                      review:
+                        "This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience. Excited to implement what I've learned!",
                     },
                     {
                       name: "Cody Fisher",
                       role: "UI/UX Designer",
                       time: "a year ago",
-                      review: "The project showcase and critique module created a collaborative environment where I could showcase my work, receive valuable feedback, and refine my skills. It added a unique and valuable dimension to the learning process.",
+                      review:
+                        "The project showcase and critique module created a collaborative environment where I could showcase my work, receive valuable feedback, and refine my skills. It added a unique and valuable dimension to the learning process.",
                     },
                     {
                       name: "Brooklyn Simmons",
                       role: "UI/UX Designer",
                       time: "a year ago",
-                      review: "The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape, and the engaging content kept me motivated throughout.",
+                      review:
+                        "The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape, and the engaging content kept me motivated throughout.",
                     },
                   ].map((rev, index) => (
-                    <div key={index} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <div
+                      key={index}
+                      className="bg-white p-6 rounded-[24px] shadow-sm border border-gray-200/80 space-y-4"
+                    >
                       <div className="flex justify-between items-start">
                         <div className="flex items-center gap-3">
                           <img
@@ -367,21 +388,27 @@ export default function CourseReviews() {
                             className="w-10 h-10 rounded-full object-cover"
                           />
                           <div>
-                            <h4 className="font-bold text-sm text-gray-900">{rev.name}</h4>
+                            <h4 className="font-bold text-sm text-gray-900">
+                              {rev.name}
+                            </h4>
                             <p className="text-xs text-gray-400">{rev.role}</p>
                           </div>
                         </div>
-                        <span className="text-xs text-gray-400">{rev.time}</span>
+                        <span className="text-xs text-gray-400">
+                          {rev.time}
+                        </span>
                       </div>
 
-                      {/* Stars */}
                       <div className="flex text-gray-800">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} size={14} className="fill-gray-800 text-gray-800" />
+                          <Star
+                            key={i}
+                            size={14}
+                            className="fill-gray-800 text-gray-800"
+                          />
                         ))}
                       </div>
 
-                      {/* Review text */}
                       <p className="text-xs text-gray-600 leading-relaxed">
                         "{rev.review}"
                       </p>
@@ -390,11 +417,9 @@ export default function CourseReviews() {
                 </div>
               </div>
             )}
-
           </div>
         </div>
       </section>
-
     </div>
   );
 }
