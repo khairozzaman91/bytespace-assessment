@@ -52,7 +52,7 @@ export default function CourseCard({ course }) {
                 className="w-6 h-6 rounded-full border-2 border-white -ml-2 first:ml-0"
               />
             ))}
-
+ 
           </div>
         </div>
 
