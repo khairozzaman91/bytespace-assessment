@@ -9,6 +9,7 @@ import CreatorCTA from "./components/CreatorCTA";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import SearchPage from "./pages/SearchPage";
+import CourseDetailsPage from "./pages/CourseDetailsPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Testimonials />
       <Footer />
       <SearchPage />
+      <CourseDetailsPage />
     </>
   );
 }
